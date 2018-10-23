@@ -4,7 +4,7 @@
 
 Hoy en dia cada vez mas gente aprovecha su tiempo libre para hacer ejercicio como correr o montar en bicicleta. Estas personas no suelen tener un control de datos sobre su ejercicio fisico, solo algunos servicios recogen datos como la ruta o la distancia recorrida.
 
-## Tema propuesto
+### Tema propuesto
 
 Desarrollar un servicio en la nube para el tracking de ciclistas o atletas en entrenamientos. Así como tambien diferentes parametros físicos.
 
