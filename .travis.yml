@@ -1,13 +1,12 @@
 branches:
   only:
     - master
-lenguage: nose_js
+lenguage: node_js
 sudo: false
 node_js:
   - 10
 install:
   - npm install mocha
-  - gem install rake
 deploy:
   provider: heroku
   api_key:
