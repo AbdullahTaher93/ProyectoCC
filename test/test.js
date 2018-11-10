@@ -13,7 +13,7 @@ describe( "API REST", function() {
     done();
   });
 
-  it('get to /data', function(done){
+  it('Get to /data', function(done){
     request(app)
       .get('/data')
       .expect('Content-Type','application/json; charset=utf-8')
@@ -21,7 +21,7 @@ describe( "API REST", function() {
       done();
   });
 
-  it('post to /data', function(done){
+  it('Post to /data', function(done){
     request(app)
       .post('/data/78/83/37.23443/-3.74343/:Antonio')
       .expect('Content-Type','application/json; charset=utf-8')
