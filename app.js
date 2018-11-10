@@ -2,8 +2,6 @@ var express = require('express');
 var app = express();
 var {data,storage,size,storeData,editData,deleteData}=require("./classes.js");
 
-
-
 //read and query
 app.get('/', function (req, res) {
 
@@ -42,7 +40,6 @@ app.put('/data/:i/:hr/:pk/:lat/:lng/:user',function(req, res){
 app.delete('/data/:i',function(req,res){
 
   output=deleteData(req.params.i)
-  
   res.send("Value deleted: "+JSON.stringify(output));
 });
 
