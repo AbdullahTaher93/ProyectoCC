@@ -4,7 +4,8 @@
   "description": "Aplicacion para el proyecto de la asignatura Cloud Computing de la Universidad de Granada",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --exit"
+    "test": "mocha --exit",
+    "start": "node app.js"
   },
   "author": "Antonio Javier Cabrera Gutierrez",
   "license": "ISC",
