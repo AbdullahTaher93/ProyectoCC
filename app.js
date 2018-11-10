@@ -6,7 +6,7 @@ var {data,storage,size,storeData,editData,deleteData}=require("./classes.js");
 
 //read and query
 app.get('/', function (req, res) {
-  res.setHeader('Content-Type', 'applicaton/json')
+
   var output={
                "status": "OK",
                "ejemplo": { "ruta": "/data",
@@ -18,13 +18,13 @@ app.get('/', function (req, res) {
 
 //read and query
 app.get('/data', function (req, res) {
-  res.setHeader('Content-Type', 'applicaton/json')
+
   res.send(JSON.stringify(storage));
 });
 
 //create
 app.post('/data/:hr/:pk/:lat/:lng/:user', function(req,res){
-  res.setHeader('Content-Type', 'applicaton/json')
+
   storeData(req.params.hr,req.params.pk,req.params.lat,req.params.lng,req.params.user);
 
   res.send("Created new position: "+JSON.stringify(storage[size-1]));
@@ -34,7 +34,7 @@ app.post('/data/:hr/:pk/:lat/:lng/:user', function(req,res){
 app.put('/data/:i/:hr/:pk/:lat/:lng/:user',function(req, res){
 
   editData(req.params.i,req.params.hr,req.params.pk,req.params.lat,req.params.lng,req.params.user);
-  res.setHeader('Content-Type', 'applicaton/json')
+
   res.send("Modified value: "+JSON.stringify(storage[req.params.i]));
 
 });
@@ -42,7 +42,7 @@ app.put('/data/:i/:hr/:pk/:lat/:lng/:user',function(req, res){
 app.delete('/data/:i',function(req,res){
 
   output=deleteData(req.params.i)
-  res.setHeader('Content-Type', 'applicaton/json')
+  
   res.send("Value deleted: "+JSON.stringify(output));
 });
 

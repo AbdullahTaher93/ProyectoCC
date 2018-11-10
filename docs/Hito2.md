@@ -91,3 +91,23 @@ Los test se han realizado usando el framework "supertest" y ejecutado con mocha.
 * Una parte comprueba la API REST que devuelva la salida correcta.
 
 * Otra parte comprueba que las funciones que operan sobre la estructura de datos cada vez que se produzcan la salida sea coherente.
+
+## Despliegue con Travis
+
+Direccion: https://evening-anchorage-70354.herokuapp.com
+
+Nos registramos con nuestra cuenta de github en Travis. Sincronizamos con nuestro reporitorio.
+
+En heroku ponemos que el metodo de despligue sea con gihub y enlazamos con nuestro repositorio.
+
+Instalamos travis con:
+
+``` gem install travis ```
+
+e configuramos travis con el comando:
+
+``` travis setup heroku ```
+
+Una vez hecho esto configuramos el archivo .travis.yml y hacemos un push a nuestro repositorio de github.
+
+Ejecutamos heroku open y saldria nuestra aplicacion.
