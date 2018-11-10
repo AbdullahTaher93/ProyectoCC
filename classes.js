@@ -80,6 +80,7 @@ function deleteData(i){
   size=size-1;
   return output;
 }
+
 module.exports = {
   data,
   storage,
