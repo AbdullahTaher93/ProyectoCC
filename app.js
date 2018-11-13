@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var {data,storage,size,storeData,editData,deleteData}=require("./classes.js");
 
-//read and query
+//read and query 
 app.get('/', function (req, res) {
 
   var output={
