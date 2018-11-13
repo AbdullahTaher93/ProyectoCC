@@ -94,7 +94,7 @@ Los test se han realizado usando el framework "supertest" y ejecutado con mocha.
 
 ## Despliegue con Travis
 
-Despliegue: https://evening-anchorage-70354.herokuapp.com
+despliegue https://evening-anchorage-70354.herokuapp.com
 
 Nos registramos con nuestra cuenta de github en Travis. Sincronizamos con nuestro reporitorio.
 
