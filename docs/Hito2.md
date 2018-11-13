@@ -104,7 +104,7 @@ Instalamos travis con:
 
 ``` gem install travis ```
 
-e configuramos travis con el comando:
+y configuramos travis con el comando:
 
 ``` travis setup heroku ```
 
