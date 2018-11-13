@@ -50,7 +50,7 @@ Esta API en un futuro se usara desde una pagina web y desde una aplicacion movil
 
 ## PaaS Heroku
 
-Se ha seleccionado este PaaS por su simplicidad de uso, es gratuito y facil de configurar, en un futuro se usara Azure.
+Se ha seleccionado este PaaS por su simplicidad de uso, es gratuito y facil de configurar, tambien es facil de integrar con Travis, en un futuro se usara Azure.
 
 Para instalar Heroku en local debemos de primero registrarnos en la pagina web y ejecutar estos pasos:
 
