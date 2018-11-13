@@ -45,7 +45,7 @@ var data = {
   }
 
 }
-//data storage
+
 storage=[];
 size=0;
 
