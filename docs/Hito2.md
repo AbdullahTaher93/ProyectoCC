@@ -50,7 +50,7 @@ Esta API en un futuro se usara desde una pagina web y desde una aplicacion movil
 
 ## PaaS Heroku
 
-Se ha seleccionado este PaaS por su simplicidad de uso, en un futuro se usara Azure.
+Se ha seleccionado este PaaS por su simplicidad de uso, es gratuito y facil de configurar, en un futuro se usara Azure.
 
 Para instalar Heroku en local debemos de primero registrarnos en la pagina web y ejecutar estos pasos:
 
@@ -94,7 +94,7 @@ Los test se han realizado usando el framework "supertest" y ejecutado con mocha.
 
 ## Despliegue con Travis
 
-Direccion: https://evening-anchorage-70354.herokuapp.com
+Despliegue: https://evening-anchorage-70354.herokuapp.com
 
 Nos registramos con nuestra cuenta de github en Travis. Sincronizamos con nuestro reporitorio.
 
