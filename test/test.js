@@ -14,7 +14,6 @@ describe( "API REST", function() {
     done();
   });
 
-
   it('Get to /data', function(done){
     request(app)
       .get('/data')
