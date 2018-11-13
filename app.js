@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var {data,storage,size,storeData,editData,deleteData}=require("./classes.js");
 
-//read and query 
+//read and query
 app.get('/', function (req, res) {
 
   var output={
@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
   res.send(output);
 });
 
-//read and query
+//read and query 
 app.get('/data', function (req, res) {
 
   res.send(JSON.stringify(storage));
