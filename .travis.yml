@@ -7,6 +7,7 @@ node_js:
   - node
 install:
   - npm install mocha
+  - npm install supertest
 deploy:
   provider: heroku
   api_key:
