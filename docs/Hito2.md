@@ -1,8 +1,8 @@
 # Documentacion del Hito 2
 
-En este hito se ha desarrollado una API REST en node JS usando express, esta API se sobtiene sobre una estructura de datos en la que se almacenan los datos que llegan a la API.
+En este hito se ha desarrollado una API REST en NodeJS usando Express, esta API se sostiene sobre una estructura de datos en la que se almacenan los datos que llegan a traves de la API.
 
-Ahora mismo los datos son almacenados en esta estructura y gestionados por ella misma, en un futuro esto se cambiara por una base de datos no relacional.
+Ahora mismo los datos son almacenados en esta estructura y gestionados por ella misma, en un futuro esto se cambiará por una base de datos no relacional.
 
 ## Estructura de datos
 
@@ -46,11 +46,11 @@ Nuestra API REST cuenta con los siguientes metodos:
 
 * DELETE sobre "/data": Elmina un elemento del vector, se le pasa el indice de este.
 
-Esta API en un futuro se usara desde una pagina web y desde una aplicacion movil.
+Esta API en un futuro se usara desde una pagina web y desde una aplicación movil.
 
 ## PaaS Heroku
 
-Se ha seleccionado este PaaS por su simplicidad de uso, es gratuito y facil de configurar, tambien es facil de integrar con Travis, en un futuro se usara Azure.
+Se ha seleccionado este PaaS por su simplicidad de uso, es gratuito y facil de configurar, tambien es facil de integrar con Travis, en un futuro se usará Azure.
 
 Para instalar Heroku en local debemos de primero registrarnos en la pagina web y ejecutar estos pasos:
 
@@ -64,7 +64,7 @@ Para instalar Heroku en local debemos de primero registrarnos en la pagina web y
 
 Nos registramos con heroku login.
 
-Comprobamos que tenemos nodejs git y npm instalados.
+Comprobamos que tenemos NodeJS, Git y npm instalados.
 
 Creamos la aplicacion con:
 
@@ -72,11 +72,11 @@ Creamos la aplicacion con:
 
 y volvemos a introducir los credenciales
 
-Ahora desplegamos el codigo:
+Ahora desplegamos el código:
 
 ``` git push heroku master ```
 
-Ahora nos tenemos que asegurar que al menos una instancia de la aplicacion se esta ejecutando:
+Ahora nos tenemos que asegurar que al menos una instancia de la aplicación se esta ejecutando:
 
 ``` heroku ps:scale web=1 ```
 
@@ -113,8 +113,8 @@ y configuramos travis con el comando:
 
 Una vez hecho esto configuramos el archivo .travis.yml y hacemos un push a nuestro repositorio de github.
 
-Ejecutamos heroku open y saldria nuestra aplicacion.
+Ejecutamos heroku open y saldria nuestra aplicación.
 
-Cada vez que hagamos un push a nuestro repositorio, travis ejecutará un proceso de integracion de la aplicacion.
+Cada vez que hagamos un push a nuestro repositorio, travis ejecutará un proceso de integracion de la aplicación.
 
-Ademas necesitaremos añadir un archivo Procfile, en el cual se especifican los comandos que tiene que ejecutar Heroku para el correspondiente despligue de la aplicacion.
+Además necesitaremos añadir un archivo Procfile, en el cual se especifican los comandos que tiene que ejecutar Heroku para el correspondiente despligue de la aplicación.
