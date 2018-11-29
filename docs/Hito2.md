@@ -80,7 +80,7 @@ Ahora nos tenemos que asegurar que al menos una instancia de la aplicacion se es
 
 ``` heroku ps:scale web=1 ```
 
-Abrimos la aplicaioens con:
+Abrimos la aplicación con:
 
 ``` heroku open ```
 
@@ -90,7 +90,7 @@ Los test se han realizado usando el framework "supertest" y ejecutado con mocha.
 
 * Una parte comprueba la API REST que devuelva la salida correcta.
 
-* Otra parte comprueba que las funciones que operan sobre la estructura de datos cada vez que se produzcan la salida sea coherente.
+* Otra parte comprueba que las funciones que operan sobre la estructura de datos cada vez que se produzcan la salida sea coherente. Es decir, cuando se hace una insercion, borrado o actualizacion la estructura de datos sea coherente.
 
 ## Despliegue con Travis
 
@@ -99,6 +99,9 @@ despliegue https://evening-anchorage-70354.herokuapp.com
 Nos registramos con nuestra cuenta de github en Travis. Sincronizamos con nuestro reporitorio.
 
 En heroku ponemos que el metodo de despligue sea con gihub y enlazamos con nuestro repositorio.
+
+![alt text](./img/deploy.png)
+
 
 Instalamos travis con:
 
@@ -111,3 +114,7 @@ y configuramos travis con el comando:
 Una vez hecho esto configuramos el archivo .travis.yml y hacemos un push a nuestro repositorio de github.
 
 Ejecutamos heroku open y saldria nuestra aplicacion.
+
+Cada vez que hagamos un push a nuestro repositorio, travis ejecutará un proceso de integracion de la aplicacion.
+
+Ademas necesitaremos añadir un archivo Procfile, en el cual se especifican los comandos que tiene que ejecutar Heroku para el correspondiente despligue de la aplicacion.
