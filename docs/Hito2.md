@@ -117,4 +117,4 @@ Ejecutamos heroku open y saldria nuestra aplicación.
 
 Cada vez que hagamos un push a nuestro repositorio, travis ejecutará un proceso de integracion de la aplicación.
 
-Además necesitaremos añadir un archivo Procfile, en el cual se especifican los comandos que tiene que ejecutar Heroku para el correspondiente despligue de la aplicación.
+Además necesitaremos añadir un archivo Procfile, en el cual se especifican los comandos que tiene que ejecutar Heroku para el correspondiente despligue de la aplicación. La estructura de este archivo es process type: command. Con el proceso web le indicamos que recive trafico HTTP.
