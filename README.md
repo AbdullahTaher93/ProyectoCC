@@ -14,11 +14,11 @@ El sistema esta formado por una arquitectura basada en microservicios. Cuenta co
 
 ##Despliege en PaaS
 
-Hemos elegido como PaaS temporal para el despliegue de nuestra aplicacion Heroku. Se ha elegido este PaaS por lo simple que es de usar y permite desplegar cualquier aplicacion desde un repositorio de Github.
+Hemos elegido como PaaS temporal, para el despliegue de nuestra aplicacion, Heroku. Se ha elegido este PaaS por lo simple que es de usar y permite desplegar cualquier aplicación desde un repositorio de Github.
 
-Como servicio de integracion se ha usado Travis. La razon de uso es la misma que la de Heroku: lo sencillo de usar. Basta con incluir un fichero .travis.yml. Para usarlo hay que enlazarlo con la cuenta de github.
+Como servicio de integración se ha usado Travis. La razón de uso es la misma que la de Heroku: lo sencillo de usar. Basta con incluir un fichero .travis.yml. Para usarlo hay que enlazarlo con la cuenta de github.
 
-Toda la informacion referente a este apartado y al microservicio desarrollado se encuentra en
+Toda la información referente a este apartado y al microservicio desarrollado se encuentra en
 
 
 [ESTE DOCUMENTO](./docs/Hito2.md)

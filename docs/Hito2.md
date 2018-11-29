@@ -92,7 +92,7 @@ Los test se han realizado usando el framework "supertest" y ejecutado con mocha.
 
 * Otra parte comprueba que las funciones que operan sobre la estructura de datos cada vez que se produzcan la salida sea coherente. Es decir, cuando se hace una insercion, borrado o actualizacion la estructura de datos sea coherente.
 
-## Despliegue con Travis
+## Integracion con Travis
 
 despliegue https://evening-anchorage-70354.herokuapp.com
 
