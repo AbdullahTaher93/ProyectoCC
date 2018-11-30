@@ -1,8 +1,7 @@
 ---
 - hosts: azure
-  user: antonio
   vars:
-    project_path: /home/antonio/proyecto
+    project_path: /home/
   tasks:
 
     - name: Crear directorio
