@@ -32,6 +32,10 @@
     - name: Elimina el proceso lanzado anteriormente
       command: pm2 delete PR
       ignore_errors: yes
+    - name: Redirigir puertos
+      become: true
+      become_method: sudo
+      command: iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 3000
     - name: Arrancar pm2
       command: pm2 start {{ project_path }}/app.js --name PR
     - name: Borrar directorio
