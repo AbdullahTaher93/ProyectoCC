@@ -1,15 +1,10 @@
 ---
 - hosts: azure
   vars:
-    project_path: /home/proyecto
+    project_path: /home
   tasks:
 
-    - name: Crear directorio
-      file:
-        dest={{ project_path }}
-        mode=0755
-        recurse=yes
-        state=directory
+    
     - name: Clonar el repositorio
       git:
         repo: https://github.com/javiercabrera184/ProyectoCC.git
