@@ -6,9 +6,9 @@ En este hito se ha desarrollado un script de provisionamiento en Ansible sobre u
 
 La maquina virtual usada en Azure tiene la siguiente configuración:
 
-* S0: Ubuntu Server 18.04
+* SO: Ubuntu Server 18.04
 * Region: Francia.
-* Autenticación: contraseña.
+* Autenticación: con contraseña.
 * Usuario: antonio
 * Direccion Ip: estática
 * Puertos abiertos: SSH y HTTP
@@ -19,11 +19,11 @@ La eleccion del sistema operativo de Ubuntu Server 18.04 es porque es la ultima 
 
 ### Ampliación de la aplicación
 
-Se ha introducido un servicio de logs en nuestra aplicacion. Se ha hecho a traves del paquete "bunyan". Se instala con npm y a continuacion se importa a nuestro proyecto con require.
+Se ha introducido un servicio de logs en nuestra aplicación. Se ha hecho a través del paquete "bunyan". Se instala con npm y a continuación se importa a nuestro proyecto con require.
 
-Este paquete, proporciona un sistema de logs a diferentes niveles. En nuestra aplicacion solo se ha usado en un nivle. Basicamente, la tarea de nuestro sistema de logs es guardar en un fichero todas las salidas de las peticiones a nuestra API REST.
+Este paquete, proporciona un sistema de logs a diferentes niveles. En nuestra aplicación solo se ha usado en un nivel. Básicamente, la tarea de nuestro sistema de logs es guardar en un fichero todas las salidas de las peticiones a nuestra API REST.
 
-La configuracion es la siguiente:
+La configuración es la siguiente:
 ```
 {
   name: 'API-REST',
@@ -56,9 +56,9 @@ Ahora vamos a proceder a realizar la tarea de provisionamiento para desplegar nu
 
 El fichero de provisionamiento se encuentra en el directorio provision con el nombre [playbook.yml](./../provision/playbook.yml).
 
-En resumen, el este fichero sigue estos pasos:
+En resumen, este fichero sigue estos pasos:
 
-* Crear un directorio donde se descargara el proyecto.
+* Crear un directorio donde se descargará el proyecto.
 * Clonar el repositorio de git.
 * Instalar npm.
 * Instalar dependencias.
@@ -66,7 +66,7 @@ En resumen, el este fichero sigue estos pasos:
 * Eliminar, si existe, un proceso pm2 anterior.
 * Redirigir el trafico del puerto de nuestra aplicacion al puerto 80.
 * Ejecutar la aplicacion.
-* Borrar el directorio donde se descargo.
+* Borrar el directorio donde se descargó.
 
 Lanzamos el playbook y el resultado es el siguiente:
 
@@ -84,6 +84,6 @@ Se ha ejecutado su archivo de provisionamiento con este resultado:
 
 ![alt text](./img/provisionjesus.png)
 
-Accedemos al la IP de la maquina y tenemos:
+Accedemos al la IP de la máquina y tenemos:
 
 ![alt text](./img/ipjesus.png)

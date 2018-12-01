@@ -30,7 +30,7 @@ despliegue https://evening-anchorage-70354.herokuapp.com
 
 ## Provisionamiento
 
-En el provisionamiento se ha usado Ansible. El servicio se ha desplegado en una maquina virtual a traves de la plataforma Azure.
+En el provisionamiento se ha usado Ansible. El servicio se ha desplegado en una máquina virtual a través de la plataforma Azure.
 
 Durante este hito se ha ampliado nuestra aplicación añadiendole un pequeño servicio de logs.
 
