@@ -40,3 +40,9 @@ Toda la información sobre este hito se encuentra en
 [ESTE DOCUMENTO](./docs/Hito3.md)
 
 MV: 40.89.171.188
+
+
+
+## Acopio
+
+MV2 : 40.89.156.219
