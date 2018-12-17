@@ -1,12 +1,12 @@
 # Documentacion del Hito 4
 
-En este hito se ha desarrollado el acopio de maquinas virtuales usando la herramienta de Azure CLI.
+En este hito se ha desarrollado el acopio de máquinas virtuales usando la herramienta de Azure CLI.
 
-Ademas se ha instalado la base de datos MongoDB para el almacenamiento de los datos. A continuacion se procede a explicar todo esto en detalle.
+Además se ha instalado la base de datos MongoDB para el almacenamiento de los datos. Acontinuación se procede a explicar todo esto en detalle.
 
-## Instalacion MongoDB
+## Instalación MongoDB
 
-La instalacion de MongoDB se realiza en el archivo de playbook.yml. La parte que nos interesa de este archivo es:
+La instalación de MongoDB se realiza en el archivo de playbook.yml. La parte que nos interesa de este archivo es:
 
 ```
 
@@ -44,9 +44,9 @@ La instalacion de MongoDB se realiza en el archivo de playbook.yml. La parte que
 
 ```
 
-Paso por paso tenemos que primero añadimos la clave GPG para Mongo, añadimos el repositorio de Mongo, instalamos Mongo y por ultimo arrancamos el servicio.
+Paso por paso, tenemos que primero añadir la clave GPG para Mongo, añadimos el repositorio de Mongo, instalamos Mongo y por último arrancamos el servicio.
 
-En la parte codigo de nuestra aplicacion, necesitamos crear la base de datos con:
+En la parte código de nuestra aplicación, necesitamos crear la base de datos con:
 
 
 ```
@@ -115,7 +115,7 @@ En este caso hemos elegido el centro de datos que tiene azure en el centro de Fr
 
 ![alt text](./img/rendimiento.png)
 
-Acontinuación creamos la red de nuestra maquina virtual y abrimos los puertos 22 y 80.
+Acontinuación creamos la red de nuestra máquina virtual y abrimos los puertos 22 y 80.
 
 ```
 az network nsg create --resource-group Prueba --location francecentral --name myNet
@@ -124,15 +124,15 @@ az network nsg rule create --resource-group Prueba --nsg-name myNet --name ssh -
 
 ```
 
-Seguidamente, creamos nuestra maquina virtual con la siguiente orden:
+Seguidamente, creamos nuestra máquina virtual con la siguiente orden:
 
 ```
 IP=$(az vm create --resource-group Prueba --name CCproyecto --image Canonical:UbuntuServer:18.04-LTS:latest --admin-username antonio --generate-ssh-keys --nsg myNet | jq -r '.publicIpAddress')
 
 ```
-Con esta orden creamos una maquina virtual en el grupo de recursos creado anteriormente. Esta maquina virtual es un UbuntuServer la version 18.04 LTS.
+Con esta orden creamos una máquina virtual en el grupo de recursos creado anteriormente. Esta máquina virtual es un UbuntuServer, la version 18.04 LTS.
 
-Esta imagen se ha elegido porque es la ultima version de UbuntuServer y es LTS, asi nos proporciona soporte para mucho tiempo y trae paquetes instalados que en otras versiones mas antiguas no trae. Como por ejemplo NodeJS. Se ha elegido la version de UbuntuServer porque trae muchos paquetes sobre gestion web que la version desktop no trae, como Apache.
+Esta imagen se ha elegido porque es la última version de UbuntuServer y es LTS, así nos proporciona soporte para mucho tiempo y trae paquetes instalados que en otras versiones mas antiguas no trae. Como por ejemplo NodeJS. Se ha elegido la version de UbuntuServer porque trae muchos paquetes sobre gestion web que la versión desktop no trae, como Apache.
 
 Por último, esta orden recoge la IP que devuelve la máquina y la pasa a nuestro archivo de provisionamiento. Se ejecuta de esta manera:
 

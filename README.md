@@ -45,9 +45,9 @@ MV: 40.89.171.188
 
 ## Acopio
 
-En esta parte se ha realizado el acopio de maquinas virtuales a traves de la linea de comandos usando la herramienta de Azure CLI.
+En esta parte se ha realizado el acopio de máquinas virtuales a través de la linea de comandos usando la herramienta de Azure CLI.
 
-Ademas se ha incorporado una base de datos no relacional como es MongoDB. Tanto la instalacion, como el uso, como el provisionamiento.
+Además se ha incorporado una base de datos no relacional como es MongoDB. Tanto la instalacion, como el uso, como el provisionamiento se explican más adelante.
 
 Toda la informacion sobre este hito se encuentra en
 
