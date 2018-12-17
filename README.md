@@ -55,4 +55,4 @@ Toda la informacion sobre este hito se encuentra en
 [ESTE DOCUMENTO](./docs/Hito4.md)
 
 
-MV2 : 40.89.157.153
+MV2: 40.89.157.153
