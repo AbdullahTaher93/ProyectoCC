@@ -45,4 +45,14 @@ MV: 40.89.171.188
 
 ## Acopio
 
-MV2 : 40.89.156.219
+En esta parte se ha realizado el acopio de maquinas virtuales a traves de la linea de comandos usando la herramienta de Azure CLI.
+
+Ademas se ha incorporado una base de datos no relacional como es MongoDB. Tanto la instalacion, como el uso, como el provisionamiento.
+
+Toda la informacion sobre este hito se encuentra en
+
+
+[ESTE DOCUMENTO](./docs/Hito4.md)
+
+
+MV2 : 40.89.157.153

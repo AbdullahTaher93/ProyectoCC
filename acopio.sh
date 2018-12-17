@@ -9,5 +9,5 @@ az network nsg rule create --resource-group Prueba --nsg-name myNet --name ssh -
 
 IP=$(az vm create --resource-group Prueba --name CCproyecto --image Canonical:UbuntuServer:18.04-LTS:latest --admin-username antonio --generate-ssh-keys --nsg myNet | jq -r '.publicIpAddress')
 
-
-ansible-playbook ./provision/playbook.yml -i $IP,
+cd provision
+ansible-playbook ./playbook.yml -i $IP,
