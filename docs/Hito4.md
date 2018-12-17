@@ -140,3 +140,6 @@ Por último, esta orden recoge la IP que devuelve la máquina y la pasa a nuestr
 ansible-playbook ./playbook.yml -i $IP,
 
 ```
+Si hacemos una peticion GET a la ruta por defecto obtenemos la siguiente salida:
+
+![alt text](./img/salida.png)
