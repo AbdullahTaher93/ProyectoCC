@@ -1,5 +1,5 @@
 ---
-- hosts: azure
+- hosts: all
   user: antonio
   vars:
     project_path: /home/antonio/proyecto
@@ -19,26 +19,36 @@
       become_method: sudo
       apt:
         pkg=npm state=present
-    - name: Importar clave publica
+    - name: Añadir clave GPG para Mongo
       become: true
       become_method: sudo
-      command: sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
-    - name: Crear lista de archivos de mongo
+      apt_key:
+        keyserver: hkp://keyserver.ubuntu.com:80
+        id: 9DA31620334BD75D9DCB49F368818C72E52529D4
+        state: present
+    - name: Añadir repo de mongo
       become: true
       become_method: sudo
-      command: sudo echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubunt ubionic/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
-    - name: Actualizar
+      lineinfile:
+        line: "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse"
+        dest: /etc/apt/sources.list.d/mongodb-org-4.0.list
+        state: present
+        create: yes
+
+    - name: Instalar MongoDB
       become: true
       become_method: sudo
-      command: apt-get update
-    - name: Instalar mongodb
+      apt:
+        name: mongodb-org
+        state: present
+        update_cache: yes
+
+    - name: Arrancar servicio
       become: true
       become_method: sudo
-      command: sudo apt-get install -y mongodb-org
-    - name: Habilitar servicio
-      become: true
-      become_method: sudo
-      command: service mongod start
+      service:
+        name: mongod
+        state: started
     - name: Instala dependecias npm
       npm:
         path={{ project_path }}

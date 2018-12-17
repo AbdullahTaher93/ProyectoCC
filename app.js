@@ -41,7 +41,7 @@ var log = bunyan.createLogger({name: 'API-REST',
   ]
 });
 
-
+var size=0;
 //read and query
 app.get('/', function (req, res) {
   res.setHeader('Content-Type', 'applicaton/json')
@@ -91,7 +91,7 @@ app.post('/data/:hr/:pk/:lat/:lng/:user', function(req,res){
       db.close();
     });
   });
-
+  size=size+1;
   res.send("Created new position: "+JSON.stringify(data));
 
 });
