@@ -1,13 +1,42 @@
 var express = require('express');
 var app = express();
-var {data,storage,size,storeData,editData,deleteData}=require("./classes.js");
 
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/mydb";
+
+MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  dbo.createCollection("app", function(err, res) {
+    if (err) throw err;
+    console.log("Collection created!");
+    db.close();
+  });
+});
+
+var data = {
+  heartrate:0,
+  peak:0,
+  time:0,
+  latitude:0,
+  longitude:0,
+  username:""
+}
+function createdata(hr,pk,lat,lon,user){
+  data.heartrate=hr;
+  data.peak=pk;
+  data.time=Date.now();
+  data.latitude=lat;
+  data.longitude=lon;
+  data.username=user;
+}
 var bunyan = require('bunyan');
 var log = bunyan.createLogger({name: 'API-REST',
   streams: [
     {
       level: 'info',
-      path: './apirest-error.log'           
+      path: './apirest-error.log'
     }
   ]
 });
@@ -29,34 +58,82 @@ app.get('/', function (req, res) {
 //read and query
 app.get('/data', function (req, res) {
   res.setHeader('Content-Type', 'applicaton/json')
-  log.info(JSON.stringify(storage));
-  res.send(JSON.stringify(storage));
+
+  MongoClient.connect(url, { useNewUrlParser: true },function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    var mysort = { time: 1 };
+    dbo.collection("app").find().sort(mysort).toArray(function(err, result) {
+      if (err) throw err;
+      log.info(JSON.stringify(result));
+      res.send(JSON.stringify(result));
+      db.close();
+    });
+  });
+
 });
 
 //create
 app.post('/data/:hr/:pk/:lat/:lng/:user', function(req,res){
   res.setHeader('Content-Type', 'applicaton/json')
-  storeData(req.params.hr,req.params.pk,req.params.lat,req.params.lng,req.params.user);
-  log.info("Created new position: "+JSON.stringify(storage[size-1]));
-  res.send("Created new position: "+JSON.stringify(storage[size-1]));
+
+  createdata(req.params.hr,req.params.pk,req.params.lat,req.params.lng,req.params.user);
+
+  log.info("Created new position: "+JSON.stringify(data));
+  MongoClient.connect(url, { useNewUrlParser: true },function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+
+
+    dbo.collection("app").insertOne(data, function(err, res) {
+      if (err) throw err;
+      console.log("1 document inserted");
+      db.close();
+    });
+  });
+
+  res.send("Created new position: "+JSON.stringify(data));
 
 });
 //edit
-app.put('/data/:i/:hr/:pk/:lat/:lng/:user',function(req, res){
+app.put('/data/:hr/:pk/:lat/:lng/:user',function(req, res){
 
-  editData(req.params.i,req.params.hr,req.params.pk,req.params.lat,req.params.lng,req.params.user);
   res.setHeader('Content-Type', 'applicaton/json');
-  log.info("Modified value: "+JSON.stringify(storage[req.params.i]));
-  res.send("Modified value: "+JSON.stringify(storage[req.params.i]));
+  createdata(req.params.hr,req.params.pk,req.params.lat,req.params.lng,req.params.user);
+  MongoClient.connect(url, { useNewUrlParser: true },function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    var myquery = { latitude: req.params.lat, longitude: req.params.lng, username: req.params.user };
+    var newvalues = { $set: data };
+    dbo.collection("app").updateOne(myquery, newvalues, function(err, res) {
+      if (err) throw err;
+      console.log("1 document updated");
+      db.close();
+    });
+  });
+  log.info("Modified value: "+JSON.stringify(data));
+  res.send("Modified value: "+JSON.stringify(data));
 
 });
 //delete
-app.delete('/data/:i',function(req,res){
+app.delete('/data/:lat/:lng/:user',function(req,res){
 
-  output=deleteData(req.params.i)
   res.setHeader('Content-Type', 'applicaton/json')
-  log.info("Value deleted: "+JSON.stringify(output));
-  res.send("Value deleted: "+JSON.stringify(output));
+
+  MongoClient.connect(url, { useNewUrlParser: true },function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    var myquery = { latitude: req.params.lat, longitude: req.params.lng, username: req.params.user };
+    dbo.collection("app").deleteOne(myquery, function(err, obj) {
+      if (err) throw err;
+      console.log("1 document deleted");
+      log.info("Value deleted: "+JSON.stringify(obj));
+      res.send("Value deleted: "+JSON.stringify(obj));
+      db.close();
+    });
+
+  });
+
 });
 
 var port = process.env.PORT || 3000;
