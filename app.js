@@ -133,7 +133,7 @@ app.delete('/data/:lat/:lng/:user',function(req,res){
     });
 
   });
-
+  size=size-1;
 });
 
 var port = process.env.PORT || 3000;
