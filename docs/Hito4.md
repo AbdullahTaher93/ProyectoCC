@@ -124,7 +124,7 @@ az network nsg rule create --resource-group Prueba --nsg-name myNet --name ssh -
 
 ```
 
-Seguidamente, creamos nuestra máquina virtual con la siguiente orden:
+Seguidamente, creamos nuestra máquina virtual con la siguiente orden, indicamos imagen, usuario, ip estatica y le indicamos que pertence al grupo de segurida de red creado anteriormente:
 
 ```
 az vm create --resource-group Prueba --name CCproyecto --image Canonical:UbuntuServer:18.04-LTS:latest --admin-username antonio --generate-ssh-keys --public-ip-address-allocation static --nsg myNet
