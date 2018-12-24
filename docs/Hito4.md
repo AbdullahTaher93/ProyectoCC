@@ -115,7 +115,7 @@ En este caso hemos elegido el centro de datos que tiene azure en el centro de Fr
 
 ![alt text](./img/rendimiento.png)
 
-Acontinuación creamos la red de nuestra máquina virtual y abrimos los puertos 22 y 80.
+Acontinuación creamos el grupo de seguridad de red de nuestra máquina virtual y abrimos los puertos 22 y 80.
 
 ```
 az network nsg create --resource-group Prueba --location francecentral --name myNet
