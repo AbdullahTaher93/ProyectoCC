@@ -19,8 +19,6 @@ Hemos elegido como PaaS temporal, para el despliegue de nuestra aplicación, Her
 Como servicio de integración se ha usado Travis. La razón de uso es la misma que la de Heroku: lo sencillo de usar. Basta con incluir un fichero .travis.yml. Para usarlo hay que enlazarlo con la cuenta de github.
 
 Toda la información referente a este apartado y al microservicio desarrollado se encuentra en
-
-
 [ESTE DOCUMENTO](./docs/Hito2.md)
 
 
@@ -35,8 +33,6 @@ En el provisionamiento se ha usado Ansible. El servicio se ha desplegado en una 
 Durante este hito se ha ampliado nuestra aplicación añadiendole un pequeño servicio de logs.
 
 Toda la información sobre este hito se encuentra en
-
-
 [ESTE DOCUMENTO](./docs/Hito3.md)
 
 MV: 40.89.171.188
@@ -50,8 +46,6 @@ En esta parte se ha realizado el acopio de máquinas virtuales a través de la l
 Además se ha incorporado una base de datos no relacional como es MongoDB. Tanto la instalacion, como el uso, como el provisionamiento se explican más adelante.
 
 Toda la informacion sobre este hito se encuentra en
-
-
 [ESTE DOCUMENTO](./docs/Hito4.md)
 
 

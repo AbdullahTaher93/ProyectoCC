@@ -111,7 +111,7 @@ En el script, lo primero que tenemos que hacer es crear el grupo de recursos con
 az group create --name Prueba --location francecentral
 
 ```
-En este caso hemos elegido el centro de datos que tiene azure en el centro de Francia por que en el siguiente [portal web](https://azurespeedtest.azurewebsites.net/), es la que menos latencia obtenemos.
+En este caso hemos elegido el centro de datos que tiene azure en el centro de Francia porque en el siguiente [portal web](https://azurespeedtest.azurewebsites.net/), es la que menos latencia obtenemos. En este caso, se ha elegido latencia como el parametro a medir ya que considero que es importante para tener una conexión rápida con la máquina virtual localizada en ese centro de datos.
 
 ![alt text](./img/rendimiento.png)
 
@@ -127,17 +127,34 @@ az network nsg rule create --resource-group Prueba --nsg-name myNet --name ssh -
 Seguidamente, creamos nuestra máquina virtual con la siguiente orden:
 
 ```
-IP=$(az vm create --resource-group Prueba --name CCproyecto --image Canonical:UbuntuServer:18.04-LTS:latest --admin-username antonio --generate-ssh-keys --nsg myNet | jq -r '.publicIpAddress')
+az vm create --resource-group Prueba --name CCproyecto --image Canonical:UbuntuServer:18.04-LTS:latest --admin-username antonio --generate-ssh-keys --public-ip-address-allocation static --nsg myNet
 
 ```
 Con esta orden creamos una máquina virtual en el grupo de recursos creado anteriormente. Esta máquina virtual es un UbuntuServer, la version 18.04 LTS.
 
 Esta imagen se ha elegido porque es la última version de UbuntuServer y es LTS, así nos proporciona soporte para mucho tiempo y trae paquetes instalados que en otras versiones mas antiguas no trae. Como por ejemplo NodeJS. Se ha elegido la version de UbuntuServer porque trae muchos paquetes sobre gestion web que la versión desktop no trae, como Apache.
 
-Por último, esta orden recoge la IP que devuelve la máquina y la pasa a nuestro archivo de provisionamiento. Se ejecuta de esta manera:
+Además, se ha realizado varias medidas usando un programa que simula un [benchmark](./../fact.java) para comprobar el rendimiento de cada sistema operativo. Este programa realiza la factorizacion de varios numeros. El programa realiza los calculos 100 veces. La salida es la media del tiempo de ejecucion y la varianza de estos datos para saber lo significativa que puede ser.
 
+Las maquinas que se han elegido para testearlas son:
+
+
+* Debian 10: con la imagen credativ:Debian:10-DAILY:latest. El resultado obtenido es:
+  * Tiempo final: 48.06 ms
+  * Varianza: 13.04 ms
+* Ubuntu 18.04: con la imagen: Canonical:UbuntuServer:18.04-LTS:latest. El resultado obtenido es:
+  * Tiempo final: 51.3636 ms
+  * Varianza: 5.87 ms
+* Centos 7: con la imagen: OpenLogic:CentOS-HPC:7.4:7.4.20180301. El resultado obtenido es:
+  * Tiempo final: 62.3737 ms
+  * Varianza: 6.35 ms
+
+A pesar que Debian ha ejecutado el programa más rapido que Ubuntu de media, la imagen elegida es Ubuntu ya que la varianza es muy pequeña, lo que quiere decir que la media obtenida es más representativa que la de Debian. Es decir, Debian puede ejecutar el programa mucho más lento que Ubuntu en ocasiones.
+
+
+Despues de la ejecucion de nuestro script, si realizamos el provisionamiento con Ansible del Hito anterior con este comando:
 ```
-ansible-playbook ./playbook.yml -i $IP,
+ansible-playbook ./playbook.yml -i 40.89.157.153,
 
 ```
 Si hacemos una peticion GET a la ruta por defecto obtenemos la siguiente salida:
