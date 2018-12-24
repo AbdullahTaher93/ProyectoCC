@@ -105,7 +105,7 @@ Lo primero que vamos a hacer es registrarnos con Azure CLI, con el comando az lo
 
 ## Creacion del script de Acopio
 
-En el script, lo primero que tenemos que hacer es crear el grupo de recursos con la siguiente orden:
+En el [script](./../acopio.sh), lo primero que tenemos que hacer es crear el grupo de recursos con la siguiente orden:
 
 ```
 az group create --name Prueba --location francecentral
