@@ -6,11 +6,7 @@ sudo: false
 node_js:
   - node
 install:
-  - npm install mocha
-  - npm install supertest
-  - npm install express
-  - npm install mongodb
-  - npm install bunyan
+  - npm install
 services:
   - mongodb
 deploy:

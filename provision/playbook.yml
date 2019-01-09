@@ -1,10 +1,13 @@
 ---
 - hosts: all
   user: antonio
+  become: yes
   vars:
     project_path: /home/antonio/proyecto
   tasks:
     - name: Crear directorio
+      become: true
+      become_method: sudo
       file:
         dest={{ project_path }}
         mode=0755
@@ -14,6 +17,7 @@
       git:
         repo: https://github.com/javiercabrera184/ProyectoCC.git
         dest: "{{ project_path }}"
+        force: yes
     - name: Instalar npm
       become: true
       become_method: sudo
@@ -34,7 +38,6 @@
         dest: /etc/apt/sources.list.d/mongodb-org-4.0.list
         state: present
         create: yes
-
     - name: Instalar MongoDB
       become: true
       become_method: sudo
@@ -42,7 +45,6 @@
         name: mongodb-org
         state: present
         update_cache: yes
-
     - name: Arrancar servicio
       become: true
       become_method: sudo
@@ -67,7 +69,3 @@
       command: iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 3000
     - name: Arrancar pm2
       command: pm2 start {{ project_path }}/app.js --name PR
-    - name: Borrar directorio
-      file:
-        state: absent
-        path: "{{ project_path }}"

@@ -1,9 +1,38 @@
-var express = require('express');
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const errorHandler = require('errorhandler');
+
+
+
 var app = express();
+
+
+app.use(cors());
+app.use(require('morgan')('dev'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({ secret: 'passport', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
+
+
+
+mongoose.connect('mongodb://localhost/passport',{ useNewUrlParser: true });
+
+
+//Models & routes
+require('./models/Users');
+require('./config/passport');
+app.use(require('./routes'));
 
 
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/mydb";
+
+
 
 MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
   if (err) throw err;
