@@ -1,8 +1,172 @@
 # Hito 5
 
-En este hito se ha realizado la orquestacion con Vagrant. Ademas se ha ampliado la funcionalidad del proyecto, añadiendo un servicio de login usando diferentes frameworks de NodeJS.
+En este hito se ha realizado la orquestación con Vagrant. Además se ha ampliado la funcionalidad del proyecto, añadiendo un servicio de login usando diferentes frameworks de NodeJS.
 
 ## Servicio de login
 
+Se ha desarrollado un servicio de login en nuestra aplicación. Para ello, se han implementado diversos archivos que se explican a continuación.
 
-## Orquestacion con Vagrant
+El servicio de login se "estructura" en tres directorios por asi decirlo:
+
+* models: En este directorio se encuentra el fichero que indica la estructura de la entidad usuario.
+
+* config: En este directorio se encuentra el middleware usado para el servicio de login.
+
+* routes: En este directorio se encuentran las rutas que el usuario tiene que acceder para crear usuario, registrarse, etc.
+
+Cuando el usuario se registra, se genera un token que sirve para luego navegar por las rutas de nuestra aplicación y acceder a algunas rutas específicas.
+
+Los usuarios se almacenan en una base de datos mongo y se usa el framework Passport.js como middlware de autenticación. Se ha usado este framework por su capacidad de integración con Express.
+
+En el modelo de usuario se ha usado JWT (JSON Web Token) y crypto para generar un hash y un salt de las contraseñas recibidas. Estas luego se usarán para validar el usuario.
+
+En passport.js se comprobarán los tokens del usuario.
+
+Por otra parte. En routes, tenemos el archivo auth.js, este recibirá el token desde la cabecera de la petición. Esto nos servirá para la navegación de un usuario ya registrado.
+
+Por último en el archivo users.js tenemos las diferentes rutas que podemos acceder. La ruta por defecto nos creará un nuevo usuario. En la ruta login, un usuario previamente registrado podrá logearse. Y por último en la ruta current, solo los usuarios que estan registrados podran acceder.
+
+Veamos su funcionamiento realizando peticiones.
+
+Las peticiones se han realizado con la herramienta Postman, ya que permite realizar peticiones complejas de forma muy sencilla.
+
+En esta imagen se ve que se ha realizado una petición POST a la ruta /api/users con el cuerpo del mensaje un JSON con el usuario y la contraseña.
+Abajo vemos la respuesta con el token devuelto y la id del usuario.
+
+![alt text](./img/creacion.png)
+
+
+En la siguiente imagen se ve como se realiza una petición post a la ruta api/users/login para el logeo del usuario.
+
+![alt text](./img/logeo.png)
+
+
+Una vez registrados, podemos acceder a la URL restringida a usuarios registrados. Nos devuelve el usuario.
+
+![alt text](./img/acceso.png)
+
+Por último, vemos que si metemos los credenciales incorrectos, el login falla.
+
+![alt text](./img/fallo.png)
+
+
+## Orquestación con Vagrant
+
+
+La orquestación se ha realizado con con vagrant, ya que es la herramienta que más uso tiene en este apartado.
+
+Para comenzar debemos de instalarla, seguidamente debemos de preparar la herramienta para su uso con Azure. Para ello, se ha seguido [el getting started del reposotorio oficial de azure en github.](https://github.com/Azure/vagrant-azure)
+
+Primero hacemos el login con azure, yo ya lo tengo hecho del hito anterior. Elegimos la nueva suscripción y ejecutamos el siguiente comando para crear un directorio de aplicacion activo de azure con acceso al gestor de recursos:
+
+```
+az ad sp create-for-rbac
+
+```
+
+![alt text](./img/suscripcion.png)
+
+Estos valores devueltos nos van a hacer falta para nuestro Vagrantfile.
+
+
+Ahora, instalamos el plugin de azure en vagrant con:
+
+```
+$ vagrant box add azure https://github.com/azure/vagrant-azure/raw/v2.0/dummy.box --provider azure
+$ vagrant plugin install vagrant-azure
+
+```
+
+![alt text](./img/plugin.png)
+
+Ahora procedemos a la creacion del archivo Vagrantfile
+
+#### Vagrantfile
+
+
+A continuación se muestra el archivo del Vagranfile.
+
+Antes de su ejecución, se deben de declarar las variables de AZURE_TENTANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET, AZURE_SUBSCRIPTION_ID como varibles de entorno y darle el valor que nos ha salido antes con la orden *az ad sp create-for-rbac*
+
+Para la ID de la subscripción, debemos de ejecutar el siguiente comando:
+
+```
+az account list --query "[?isDefault].id" -o tsv
+```
+
+
+El archivo de Vagranfile comienza creando un box de azure y acaba con la provisión:
+
+```
+
+Vagrant.configure('2') do |config|
+  config.vm.box = 'azure'
+
+  # cargamos la clave ssh
+  config.ssh.private_key_path = '~/.ssh/id_rsa'
+  config.vm.provider :azure do |azure, override|
+
+    # VARIABLES OBLIGATORIAS
+    azure.tenant_id = ENV['AZURE_TENANT_ID']
+    azure.client_id = ENV['AZURE_CLIENT_ID']
+    azure.client_secret = ENV['AZURE_CLIENT_SECRET']
+    azure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
+
+    # OPCIONALES
+    azure.vm_name="hito5"
+    azure.admin_username="antonio"
+    azure.vm_image_urn="Canonical:UbuntuServer:18.04-LTS:latest"
+    azure.location="westeurope"
+    azure.resource_group_name="CC"
+    azure.nsg_name="myNet"
+    azure.tcp_endpoints = 80
+
+
+  end
+  #provisionamos
+  config.vm.provision "ansible" do |ansible|
+    ansible.verbose = "v"
+    ansible.playbook = "./provision/playbook.yml"
+  end
+end
+
+```
+
+Primeramente se exporta la clave ssh para poder acceder, luego se les da valor a las variables obligatorias previamente comentadas, y por último las opcionales, que tienen que ver con los parametros de la máquina virtual.
+
+Existen muchos parametros a configurar, pero solo me he centrado en los que en hitos anteriores he usado, como la localización, el grupo de seguridad de red, la apertura de puertos, la imagen y el usuario. La justificacion de la eleccion de la imagen y del grupo de recursos ya se han expuesto en hitos anteriores. Los demás valores se han dejado por defecto, como el almacenamiento.
+
+Para lanzar el archivo de vagrantfile solo basta con ejecutar el siguiente comando:
+
+
+```
+vagrant up
+
+```
+
+Con esto realizamos tanto la creación de la máquina virtual como de su provisionamiento. Podemos acceder a la maquina vitual con:
+
+```
+vagrant ssh
+```
+
+![alt text](./img/ssh.png)
+
+
+El provisiomaniento tambien se puede hacer con:
+
+```
+vagrant provision
+```
+
+Esta es la salida:
+
+![alt text](./img/salida1.png)
+![alt text](./img/saldia2.png)
+
+He puesto estas últimas dos capturas en vez de poner la salida del *vagrant up* porque el vagrant up me muestra una salida vacia, aunque la ejecución es la correcta.
+
+Por último, hacemos una peticion a la IP.
+![alt text](./img/muestra.png)
+
+## Comprobacion compañero

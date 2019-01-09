@@ -25,6 +25,7 @@ mongoose.connect('mongodb://localhost/passport',{ useNewUrlParser: true });
 
 //AÑADIMOS EL MODELO
 require('./models/Users');
+//y el middleware
 require('./config/passport');
 app.use(require('./routes'));
 

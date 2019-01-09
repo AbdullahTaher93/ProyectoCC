@@ -33,7 +33,7 @@ En el provisionamiento se ha usado Ansible. El servicio se ha desplegado en una 
 Durante este hito se ha ampliado nuestra aplicación añadiendole un pequeño servicio de logs.
 
 Toda la información sobre este hito se encuentra en
-[ESTE DOCUMENTO](./docs/Hito3.md)
+[este documento](./docs/Hito3.md)
 
 MV: 40.89.171.188
 
@@ -46,12 +46,16 @@ En esta parte se ha realizado el acopio de máquinas virtuales a través de la l
 Además se ha incorporado una base de datos no relacional como es MongoDB. Tanto la instalacion, como el uso, como el provisionamiento se explican más adelante.
 
 Toda la informacion sobre este hito se encuentra en
-[ESTE DOCUMENTO](./docs/Hito4.md)
+[este documento](./docs/Hito4.md)
 
 
 MV2: 40.89.157.153
 
 
-## Orquestacion
+## Orquestación
+
+En esta ocasión se ha realizado la orquestación de la máquina virtual usando la herramienta de orquestación Vagrant. Además se ha ampliado la funcionalidad del proyecto creando un servicio de login para que un usuario pueda registrarse o crear un usuario nuevo. Por último, se ha comprobado el provisionamiento de un compañero a través se su Vagrantfile.
+
+Toda la información a este hito se encuentra en [este documento](./docs/Hito5.md)
 
 Despliegue Vagrant: 13.80.5.15
