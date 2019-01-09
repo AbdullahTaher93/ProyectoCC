@@ -4,7 +4,7 @@ const router = require('express').Router();
 const auth = require('../auth');
 const Users = mongoose.model('Users');
 
-//POST new user route (optional, everyone has access)
+//POST RUTA PRA CREAR UN NUEVO USUARIO
 router.post('/', auth.optional, (req, res, next) => {
   const { body: { user } } = req;
 
@@ -32,7 +32,7 @@ router.post('/', auth.optional, (req, res, next) => {
     .then(() => res.json({ user: finalUser.toAuthJSON() }));
 });
 
-//POST login route (optional, everyone has access)
+//POST RUTA PARA LOGEARTE
 router.post('/login', auth.optional, (req, res, next) => {
   const { body: { user } } = req;
 
@@ -68,7 +68,7 @@ router.post('/login', auth.optional, (req, res, next) => {
   })(req, res, next);
 });
 
-//GET current route (required, only authenticated users have access)
+//GET RUTA EN LA QUE SOLO SE TIENE ACCESO SI SE ESTA AUTENTICADO
 router.get('/current', auth.required, (req, res, next) => {
   const { payload: { id } } = req;
 

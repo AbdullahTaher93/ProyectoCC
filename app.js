@@ -23,7 +23,7 @@ app.use(session({ secret: 'passport', cookie: { maxAge: 60000 }, resave: false, 
 mongoose.connect('mongodb://localhost/passport',{ useNewUrlParser: true });
 
 
-//Models & routes
+//AÑADIMOS EL MODELO
 require('./models/Users');
 require('./config/passport');
 app.use(require('./routes'));

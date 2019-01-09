@@ -1,3 +1,4 @@
+//uso de los tokens
 const jwt = require('express-jwt');
 
 const getTokenFromHeaders = (req) => {

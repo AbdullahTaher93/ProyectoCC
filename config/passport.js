@@ -1,3 +1,4 @@
+//USO DEL MIDLEWARE PASSPORT
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
