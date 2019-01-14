@@ -25,6 +25,14 @@
         name: mongodb-org
         state: present
         update_cache: yes
+    - name: Hacemos que escuche de otras IPs
+      become: true
+      become_method: sudo
+      command: sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
+    - name: Permitir conexiones por el puerto 27017
+      become: true
+      become_method: sudo
+      command: iptables -A INPUT -p tcp --dport 27017 -j ACCEPT
     - name: Arrancar servicio
       become: true
       become_method: sudo
