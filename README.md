@@ -58,4 +58,4 @@ En esta ocasión se ha realizado la orquestación de la máquina virtual usando 
 
 Toda la información a este hito se encuentra en [este documento](./docs/Hito5.md)
 
-Despliegue Vagrant: 13.80.5.15
+Despliegue Vagrant: 40.113.128.22
