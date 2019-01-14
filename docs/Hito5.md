@@ -243,3 +243,61 @@ Por último, hacemos una peticion a la IP.
 ![alt text](./img/muestra.png)
 
 ## Comprobacion compañero
+
+Se ha comprobado el Vagrantfile de los compañeros Jesus Mesa Gonzalez y Alex Grimm.
+
+#### Jesus Mesa
+
+Se ha usado el Vagrantfile y los playbooks ubicados en [esta dirección](https://github.com/mesagon/Proyecto-CC-MII/tree/master/orquestacion).
+
+Se ha cambiado el nombre de las máquinas virtuales, para que no establezca la misma DNS, así nos evitamos problemas.
+
+Se ha procedido a la ejecucion con el comando:
+
+```
+vagrant up --no-parallel
+```
+
+Esta es la salida:
+
+![alt text](./img/jesus1.png)
+![alt text](./img/jesus2.png)
+![alt text](./img/jesus3.png)
+![alt text](./img/jesus4.png)
+![alt text](./img/jesus5.png)
+![alt text](./img/jesus6.png)
+![alt text](./img/jesus7.png)
+![alt text](./img/jesus8.png)
+![alt text](./img/jesus9.png)
+
+
+Accedemos a la URL para ver si funciona y este es el resultado:
+
+![alt text](./img/jesusoutput.png)
+
+#### Alex Grimm
+
+Se ha usado el Vagrantfile y los playbooks ubicados en [esta direccion](https://github.com/alex1ai/ugr-master-cc/tree/master/orquestacion).
+
+Se ha cambiado el nombre de las maquinas virtuales, para que no establezca la misma DNS, así nos evitamos errores.
+
+Se ha procedido a la ejecucion con el comando:
+
+```
+vagrant up --no-parallel
+```
+Esta es la salida:
+
+![alt text](./img/alex1.png)
+![alt text](./img/alex2.png)
+![alt text](./img/alex3.png)
+![alt text](./img/alex4.png)
+![alt text](./img/alex5.png)
+![alt text](./img/alex6.png)
+![alt text](./img/alex7.png)
+![alt text](./img/alex8.png)
+
+
+Aqui podemos ver la salida de su IP
+
+![alt text](./img/salidaalex.png)

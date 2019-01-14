@@ -54,7 +54,7 @@ MV2: 40.89.157.153
 
 ## Orquestación
 
-En esta ocasión se ha realizado la orquestación de la máquina virtual usando la herramienta de orquestación Vagrant. Además se ha ampliado la funcionalidad del proyecto creando un servicio de login para que un usuario pueda registrarse o crear un usuario nuevo. Por último, se ha comprobado el provisionamiento de un compañero a través se su Vagrantfile.
+En esta ocasión se ha realizado la orquestación de la máquina virtual usando la herramienta de orquestación Vagrant. Además se ha ampliado la funcionalidad del proyecto creando un servicio de login para que un usuario pueda registrarse o crear un usuario nuevo. Por último, se ha comprobado el provisionamiento de dos compañeros a través se su Vagrantfile. Ellos, por su parte, han comprobado el mio.
 
 Toda la información a este hito se encuentra en [este documento](./docs/Hito5.md)
 
