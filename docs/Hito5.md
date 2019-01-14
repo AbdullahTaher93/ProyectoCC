@@ -244,7 +244,7 @@ Por último, hacemos una peticion a la IP.
 
 ## Comprobacion compañero
 
-Se ha comprobado el Vagrantfile de los compañeros Jesus Mesa Gonzalez y Alex Grimm.
+Se ha comprobado el Vagrantfile de los compañeros Jesus Mesa Gonzalez y Alex Grimm. Se muestra la ejecución del vagrant up pero en mi caso no se ve la salida del vagrant, solo la salida de la parte de ansible.
 
 #### Jesus Mesa
 
