@@ -248,7 +248,7 @@ Se ha comprobado el Vagrantfile de los compañeros Jesus Mesa Gonzalez y Alex Gr
 
 #### Jesus Mesa
 
-Se ha usado el Vagrantfile y los playbooks ubicados en [esta dirección](https://github.com/mesagon/Proyecto-CC-MII/tree/master/orquestacion).
+Se ha usado el Vagrantfile y los playbooks ubicados en [esta dirección](https://github.com/mesagon/Proyecto-CC-MII/tree/master/orquestacion). Por su parte, Jesus me ha comprobado el mio en [esta direccion](https://github.com/mesagon/Proyecto-CC-MII/blob/master/docs/hito5/comprobacionVagrantfile.md).
 
 Se ha cambiado el nombre de las máquinas virtuales, para que no establezca la misma DNS, así nos evitamos problemas.
 
