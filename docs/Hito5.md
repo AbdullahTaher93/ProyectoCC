@@ -277,7 +277,7 @@ Accedemos a la URL para ver si funciona y este es el resultado:
 
 #### Alex Grimm
 
-Se ha usado el Vagrantfile y los playbooks ubicados en [esta direccion](https://github.com/alex1ai/ugr-master-cc/tree/master/orquestacion).
+Se ha usado el Vagrantfile y los playbooks ubicados en [esta direccion](https://github.com/alex1ai/ugr-master-cc/tree/master/orquestacion). Por su parte, Alex me ha comprobado el mio en [esta direccion](https://github.com/alex1ai/ugr-master-cc/blob/gh-pages/vagrant_provision.md#vagrantfile-from-antonio-javier-cabrera).
 
 Se ha cambiado el nombre de las maquinas virtuales, para que no establezca la misma DNS, así nos evitamos errores.
 
