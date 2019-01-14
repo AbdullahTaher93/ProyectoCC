@@ -116,7 +116,7 @@ Vagrant.configure('2') do |config|
       azure.vm_name="hito5-database"
       azure.admin_username="antonio"
       azure.vm_image_urn="Canonical:UbuntuServer:18.04-LTS:latest"
-      azure.location="westeurope"
+      azure.location="francecentral"
       azure.resource_group_name="CC"
 
       azure.tcp_endpoints = 27017
@@ -147,7 +147,7 @@ Vagrant.configure('2') do |config|
       azure.vm_name="hito5-app"
       azure.admin_username="antonio"
       azure.vm_image_urn="Canonical:UbuntuServer:18.04-LTS:latest"
-      azure.location="westeurope"
+      azure.location="francecentral"
       azure.resource_group_name="CC"
 
       azure.tcp_endpoints = [80,27017]
